@@ -1,0 +1,57 @@
+.slider .circle::before, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  min-height: 100dvh;
+  padding-inline: 3rem;
+}
+
+.slider {
+  position: relative;
+  max-width: 600px;
+  width: 100%;
+  height: 40px;
+  background-color: orange;
+  border-radius: 20px;
+  cursor: pointer;
+  touch-action: none;
+}
+.slider .circle {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  background-color: orangered;
+  left: calc(var(--left, 0%) - 30px);
+  top: -10px;
+}
+.slider .circle::before {
+  content: attr(data-step);
+  position: absolute;
+  pointer-events: none;
+  width: 60px;
+  height: 30px;
+  top: -40px;
+  left: 0px;
+  border-radius: 15px;
+  background-color: #fff;
+  color: #1f1f1f;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+/*# sourceMappingURL=main.css.map */

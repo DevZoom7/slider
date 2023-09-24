@@ -1,0 +1,68 @@
+@use "sass:math";
+
+%flex-center {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+* {
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+   font-family: sans-serif;
+}
+
+html {
+   color-scheme: dark;
+}
+
+body {
+   min-height: 100dvh;
+   @extend %flex-center;
+   padding-inline: 3rem;
+}
+
+.slider {
+   $sliderHeight: 40px;
+   $radius: $sliderHeight * 0.5;
+   position: relative;
+   max-width: 600px;
+   width: 100%;
+   height: $sliderHeight;
+   background-color: orange;
+   border-radius: $radius;
+   cursor: pointer;
+   touch-action: none;
+   .circle {
+      position: absolute;
+      $diameter: $sliderHeight * 1.5;
+      $radius: $diameter * 0.5;
+      width: $diameter;
+      height: $diameter;
+      border-radius: $radius;
+      background-color: orangered;
+      left: calc(var(--left, 0%) - $diameter / 2);
+      top: math.div($sliderHeight, -4);
+      &::before {
+         $width: 60px;
+         $height: $width * 0.5;
+         $radius: $height * 0.5;
+         content: attr(data-step);
+         position: absolute;
+         pointer-events: none;
+         width: $width;
+         height: $height;
+         top: -40px;
+         left: math.div($diameter - $width, 2);
+         @extend %flex-center;
+         border-radius: $radius;
+         background-color: #fff;
+         color: #1f1f1f;
+         font: {
+            size: 22px;
+            weight: 900;
+         }
+      }
+   }
+}
